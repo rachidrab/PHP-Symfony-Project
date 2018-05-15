@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Home Page{% endblock %}</title>
+    {% block stylesheets %}
+        <!-- Original Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel='stylesheet' id='bootstrap-css' href='PATH/bootstrap.min.css?ver=3.3.7' type='text/css' />
+        <link rel='stylesheet' id='bootstrap-rtl-css' href='PATH/bootstrap.rtl.min.css?ver=3.3.7.3' type='text/css' />
+    {% endblock %}
+
+</head>
+
+<body align="right" style="direction:rtl; margin-right:20px;">
+
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header" align="center">
+            <button class="btn btn-outline-info my-2 my-sm-0" style="margin-right: 20rem;font-family: Droid Arabic Kufi;padding-right: 20rem;padding-left: 20rem;"><a class="navbar-brand" href="http://localhost:8000/article/getAll">القائمة الرئيسية</a></button>
+        </div>
+    </div>
+</nav>
+<div class="container" >
+    <div class="row">
+
+        <div class="col-lg-4">
+
+            {% block body %}
+
+
+                <br><br><br><br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <ul class="list-unstyled mb-0">
+
+                                {% for article in articles %}
+                                    <li style="direction:rtl; margin-right:18px;">
+                                        <table>
+                                            <tr>
+                                                <td width=40px>
+                                                    <div class="card post-preview text-right mb-4 border-primary" style="width: 15rem; height: 10rem;">
+
+
+                                                        <img class="card-img-top img-rounded" src="{{ article.getImage() }}" alt="Card image cap" style="width: 100%;height: 100%;">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                        <div class="card post-preview text-right mb-4 bg-light" style="width: 40rem; height: 10rem;">
+
+                                            <div class="card-body">
+                                                <h5 class="card-title" style="font-family: Droid Arabic Kufi;"><a href="http://localhost:8000/article/getArticle/{{ article.getId() }}">{{ article.getTitle() }}</a></h5>
+                                                <p class="card-text" style="font-size: small;font-family: Droid Arabic Kufi;">{{ article.getAuthor() }}</p>
+                                                <a href="http://localhost:8000/article/getArticle/{{ article.getId() }}" class="btn btn-primary" style="font-family: Droid Arabic Kufi;">المزيد ...</a>
+                                            </div>
+                                        </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </li>
+
+
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <footer>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">السابق</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">التالي</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </footer>
+            {% endblock %}
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+</body>
+</html>

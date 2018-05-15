@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome imdal!{% endblock %}</title>
+        {% block stylesheets %}
+        <!-- Original Bootstrap 3.3.7 -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel='stylesheet' id='bootstrap-css' href='PATH/bootstrap.min.css?ver=3.3.7' type='text/css' />
+        <link rel='stylesheet' id='bootstrap-rtl-css' href='PATH/bootstrap.rtl.min.css?ver=3.3.7.3' type='text/css' />
+        {% endblock %}
+        <style>
+            @import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+            @import url(http://fonts.googleapis.com/earlyaccess/amiri.css);
+        </style>
+    </head>
+    <body align="right" style="direction:rtl; margin-right:20px; padding: 70px 70px 70px 70px;">
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header" align="center">
+            <button class="btn btn-outline-info my-2 my-sm-0" style="margin-right: 20rem;font-family: Droid Arabic Kufi;padding-right: 20rem;padding-left: 20rem;"><a class="navbar-brand" href="http://localhost:8000/article/getAll">لائحة المقالات</a></button>
+        </div>
+    </div>
+    </nav>
+   <br>
+
+                   {% block body %}
+                       <div class="container" style="direction: rtl" style="font-family: Droid Arabic Kufi;">
+
+                           <div class="row">
+
+                               <!-- Post Content Column -->
+                               <div class="col-lg-8" style="direction: rtl;">
+
+                                   <div class="card mb-3 text-right">
+                                       <img class="card-img-top" src="{{ article[0].getImage() }}" alt="Card image cap">
+                                       <div class="card-body">
+                                           <h5 class="card-title" style="font-size: x-large;font-family: Droid Arabic Kufi;">{{ article[0].getTitle() }}</h5>
+                                           <p class="card-text"><small class="text-muted">{{ article[0].getAuthor() }}</small></p>
+                                           <p class="card-text" style="font-size: medium;font-family: Droid Arabic Kufi;" >{{ article[0].getDescrip() }}</p>
+
+                                       </div>
+                                   </div>
+
+                                   <hr>
+
+                                   <!-- Comments Form -->
+                                   <div class="card my-4 text-right">
+                                       <h5 class="card-header" style="font-family: Droid Arabic Kufi;">أترك تعليقا</h5>
+                                       <div class="card-body">
+                                           <form>
+                                               <div class="form-group">
+                                                   <textarea class="form-control" rows="3"></textarea>
+                                               </div>
+                                               <button type="submit" class="btn btn-primary" style="font-family: Droid Arabic Kufi;">تعليق</button>
+                                           </form>
+                                       </div>
+                                   </div>
+
+                               </div>
+
+
+
+
+                               <!-- Sidebar Widgets Column -->
+                               <div class="col-md-4">
+
+                                   <!-- Search Widget -->
+                                   <div class="card my-4 text-right">
+                                       <h5 class="card-header" style="font-family: Droid Arabic Kufi;">بحث</h5>
+                                       <div class="card-body">
+                                           <div class="input-group">
+                                               <input type="text" class="form-control" placeholder="البحث عن ..">
+                                               <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button" style="font-family: Droid Arabic Kufi;">بحث</button>
+                </span>
+                                           </div>
+                                       </div>
+                                   </div>
+
+
+
+
+
+
+                                   <!-- Categories Widget -->
+                                   <div class="card my-4 text-right" style="max-width: 50rem;">
+                                       <h5 class="card-header" style="font-family: Droid Arabic Kufi;">مقالات اخرى</h5>
+                                       <div class="card-body">
+                                           <div class="row">
+                                               <div class="col-lg-6">
+                                                   <table>
+
+                                                       {% for a in articles %}
+                                                           <tr>
+                                                               <div class="card" style="width: 18rem;">
+                                                                   <div class="card-body">
+                                                                       <h6 class="card-title" style="font-family: Droid Arabic Kufi;">{{ a.getTitle() }}</h6>
+                                                                       <p class="card-text" style="font-family: Droid Arabic Kufi;"><small>{{ a.getAuthor() }}</small></p>
+                                                                       <a href="http://localhost:8000/article/getArticle/{{ a.getId() }}" class="btn btn-primary" style="font-family: Droid Arabic Kufi;">قراءة المزيد</a>
+                                                                   </div>
+                                                               </div>
+                                                           </tr>
+                                                       {% endfor %}
+                                                   </table>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+
+                               </div>
+
+                           </div>
+                           <!-- /.row -->
+
+                       </div>
+                       <!-- /.container -->
+
+
+
+                       <!-- Bootstrap core JavaScript -->
+                       <script src="vendor/jquery/jquery.min.js"></script>
+                       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
+
+
+            		{% endblock %}
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    </body>
+</html>
