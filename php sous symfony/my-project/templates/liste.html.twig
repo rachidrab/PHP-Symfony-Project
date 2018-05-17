@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Home Page{% endblock %}</title>
+    <title>{% block title %}اللائحة الرئيسية{% endblock %}</title>
     {% block stylesheets %}
         <!-- Original Bootstrap 3.3.7 -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -21,17 +21,13 @@
         </div>
     </div>
 </nav>
-<div class="container" >
-    <div class="row">
 
-        <div class="col-lg-4">
-
-            {% block body %}
+        {% block body %}
 
 
                 <br><br><br><br>
-                <div class="container">
-                    <div class="row">
+            <div class="container">
+                <div class="row">
                         <div class="col-lg-8">
                             <ul class="list-unstyled mb-0">
 
@@ -86,10 +82,7 @@
                     </nav>
                 </footer>
             {% endblock %}
-        </div>
-        <div class="col"></div>
-    </div>
-</div>
+
 
 </body>
 </html>
